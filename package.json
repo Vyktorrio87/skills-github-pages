@@ -1,0 +1,14 @@
+{
+  "name": "gps-simulator",
+  "private": true,
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "vite": "^5.0.0",
+    "@mapbox/polyline": "^1.2.0"
+  }
+}

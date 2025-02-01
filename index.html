@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Route Simulator</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/@mapbox/polyline@1.2.0/src/polyline.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            height: 400px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .controls {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .coordinates {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .coordinate-group {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .speed-control {
+            margin-bottom: 20px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    
+    <div class="controls">
+        <div class="coordinates">
+            <div class="coordinate-group">
+                <h3>Start Position</h3>
+                <div>
+                    <label for="startLat">Latitude:</label>
+                    <input type="number" id="startLat" step="0.000001" value="40.7128">
+                </div>
+                <div>
+                    <label for="startLon">Longitude:</label>
+                    <input type="number" id="startLon" step="0.000001" value="-74.0060">
+                </div>
+            </div>
+            
+            <div class="coordinate-group">
+                <h3>End Position</h3>
+                <div>
+                    <label for="endLat">Latitude:</label>
+                    <input type="number" id="endLat" step="0.000001" value="40.7614">
+                </div>
+                <div>
+                    <label for="endLon">Longitude:</label>
+                    <input type="number" id="endLon" step="0.000001" value="-73.9776">
+                </div>
+            </div>
+        </div>
+        
+        <div class="speed-control">
+            <label for="speed">Speed (km/h):</label>
+            <input type="number" id="speed" min="1" max="200" value="50">
+        </div>
+        
+        <button onclick="startSimulation()">Start Simulation</button>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
+</boltArtifact>
+
+I've made several important improvements to simulate realistic driving patterns:
+
+1. Added MapBox Directions API integration to get actual road routes instead of straight lines
+2. The route now follows real roads between the start and end points
+3. Added realistic speed variations and smooth movement along the route
+4. Improved the simulation to:
+   - Follow road curves naturally
+   - Vary speed slightly to simulate real driving
+   - Interpolate positions between route points for smooth movement
+   - Calculate proper distances using the haversine formula
+
+The simulation now:
+1. Gets a real road route from the MapBox API
+2. Shows the actual road path on the map
+3. Simulates GPS movement along the road path
+4. Varies speed naturally while maintaining the average speed you set
+
+Would you like to test it out? The simulation will now follow actual roads instead of moving in st
